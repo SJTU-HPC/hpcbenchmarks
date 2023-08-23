@@ -1,0 +1,4 @@
+environs
+jinja2
+pyecharts
+loguru

@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Report</title>
+    <script type="text/javascript" src="https://assets.pyecharts.org/assets/echarts.min.js"></script>
+    <style type="text/css">
+        .container {
+            padding: 1rem;
+            width: 700px;
+            margin: auto;
+        }
+
+        .tg {
+            border-collapse: collapse;
+            border-color: #ccc;
+            border-spacing: 0;
+        }
+
+        .tg td {
+            background-color: #fff;
+            border-color: #ccc;
+            border-style: solid;
+            border-width: 1px;
+            color: #333;
+            font-family: Arial, sans-serif;
+            font-size: 14px;
+            overflow: hidden;
+            padding: 10px 5px;
+            word-break: normal;
+        }
+
+        .tg th {
+            background-color: #f0f0f0;
+            border-color: #ccc;
+            border-style: solid;
+            border-width: 1px;
+            color: #333;
+            font-family: Arial, sans-serif;
+            font-size: 14px;
+            font-weight: normal;
+            overflow: hidden;
+            padding: 10px 5px;
+            word-break: normal;
+        }
+
+        .tg .tg-fymr {
+            border-color: inherit;
+            font-weight: bold;
+            text-align: left;
+            vertical-align: top
+        }
+
+        .tg .tg-1wig {
+            font-weight: bold;
+            text-align: left;
+            vertical-align: top
+        }
+
+        .tg .tg-0lax {
+            text-align: left;
+            vertical-align: top
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div id="info" style="margin: 20px auto; text-align: center;">
+            <h1>HPCbench 测试报告</h1>
+        </div>
+        <div style="margin: 10px auto; text-align: left;">
+            <h5>集群：思源一号</h5>
+            <h5>报告日期：2023.08.23</h5>
+        </div>
+        <div id="table" style="width:620px; margin: 20px auto;">
+            <table class="tg">
+                <thead>
+                    <tr>
+                        <th class="tg-fymr">维度</th>
+                        <th class="tg-fymr">指标</th>
+                        <th class="tg-fymr">实测值</th>
+                        <th class="tg-fymr">参考值</th>
+                        <th class="tg-fymr">指标分数</th>
+                        <th class="tg-fymr">权重</th>
+                        <th class="tg-fymr">维度分</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="tg-fymr" rowspan="2">计算性能</td>
+                        <td class="tg-0lax">HPL双精度浮点计算性能</td>
+                        <td class="tg-0lax"> {{ test.compute.HPL }} </td>
+                        <td class="tg-0lax"> {{ compute.HPL[scale] }} </td>
+                        <td class="tg-0lax"> {{ "%.2f"|format(compute.HPL.score) }} </td>
+                        <td class="tg-0lax"> {{ compute.HPL.weights }} </td>
+                        <td class="tg-0lax" rowspan="2"> {{ "%.2f"|format(compute.issue_score) }} </td>
+                    </tr>
+                    <tr>
+                        <td class="tg-0lax">HPCG双精度浮点计算性能</td>
+                        <td class="tg-0lax"> {{ test.compute.HPCG }} </td>
+                        <td class="tg-0lax"> {{ compute.HPCG[scale] }} </td>
+                        <td class="tg-0lax"> {{ "%.2f"|format(compute.HPCG.score) }} </td>
+                        <td class="tg-0lax"> {{ compute.HPCG.weights }} </td>
+                    </tr>
+                    <tr>
+                        <td class="tg-fymr" rowspan="2">AI计算性能</td>
+                        <td class="tg-0lax">图像推理任务的计算性能</td>
+                        <td class="tg-0lax"> {{ test.AI.infering }} </td>
+                        <td class="tg-0lax"> {{ AI.infering[scale] }} </td>
+                        <td class="tg-0lax"> {{ "%.2f"|format(AI.infering.score) }} </td>
+                        <td class="tg-0lax"> {{ AI.infering.weights }} </td>
+                        <td class="tg-0lax" rowspan="2"> {{ "%.2f"|format(AI.issue_score) }} </td>
+                    </tr>
+                    <tr>
+                        <td class="tg-0lax">图像训练任务的计算性能</td>
+                        <td class="tg-0lax"> {{ test.AI.training }} </td>
+                        <td class="tg-0lax"> {{ AI.training[scale] }} </td>
+                        <td class="tg-0lax"> {{ "%.2f"|format(AI.training.score) }} </td>
+                        <td class="tg-0lax"> {{ AI.training.weights }} </td>
+                    </tr>
+                    <tr>
+                        <td class="tg-fymr" rowspan="5">存储性能</td>
+                        <td class="tg-0lax">文件系统单客户端单流带宽</td>
+                        <td class="tg-0lax"> {{ test.storage.single_client_single_fluence }} </td>
+                        <td class="tg-0lax"> {{ storage.single_client_single_fluence[scale] }} </td>
+                        <td class="tg-0lax"> {{ "%.2f"|format(storage.single_client_single_fluence.score) }} </td>
+                        <td class="tg-0lax"> {{ storage.single_client_single_fluence.weights }} </td>
+                        <td class="tg-0lax" rowspan="5"> {{ "%.2f"|format(storage.issue_score) }} </td>
+                    </tr>
+                    <tr>
+                        <td class="tg-0lax">文件系统单客户端多流带宽</td>
+                        <td class="tg-0lax"> {{ test.storage.single_client_multi_fluence }} </td>
+                        <td class="tg-0lax"> {{ storage.single_client_multi_fluence[scale] }} </td>
+                        <td class="tg-0lax"> {{ "%.2f"|format(storage.single_client_multi_fluence.score) }} </td>
+                        <td class="tg-0lax"> {{ storage.single_client_multi_fluence.weights }} </td>
+                    </tr>
+                    <tr>
+                        <td class="tg-0lax">文件系统聚合带宽</td>
+                        <td class="tg-0lax"> {{ test.storage.aggregation_bandwidth }} </td>
+                        <td class="tg-0lax"> {{ storage.aggregation_bandwidth[scale] }} </td>
+                        <td class="tg-0lax"> {{ "%.2f"|format(storage.aggregation_bandwidth.score) }} </td>
+                        <td class="tg-0lax"> {{ storage.aggregation_bandwidth.weights }} </td>
+                    </tr>
+                    <tr>
+                        <td class="tg-0lax">文件系统聚合IO操作速率</td>
+                        <td class="tg-0lax"> {{ test.storage.IO_rate }} </td>
+                        <td class="tg-0lax"> {{ storage.IO_rate[scale] }} </td>
+                        <td class="tg-0lax"> {{ "%.2f"|format(storage.IO_rate.score) }} </td>
+                        <td class="tg-0lax"> {{ storage.IO_rate.weights }} </td>
+                    </tr>
+                    <tr>
+                        <td class="tg-0lax">多协议平均访问效率</td>
+                        <td class="tg-0lax"> {{ test.storage.multi_request }} </td>
+                        <td class="tg-0lax"> {{ storage.multi_request[scale] }} </td>
+                        <td class="tg-0lax"> {{ "%.2f"|format(storage.multi_request.score) }} </td>
+                        <td class="tg-0lax"> {{ storage.multi_request.weights }} </td>
+                    </tr>
+                    <tr>
+                        <td class="tg-1wig" rowspan="3">网络性能</td>
+                        <td class="tg-0lax">点对点网络带宽</td>
+                        <td class="tg-0lax"> {{ test.network.P2P_network_bandwidth }} </td>
+                        <td class="tg-0lax"> {{ network.P2P_network_bandwidth[scale] }} </td>
+                        <td class="tg-0lax"> {{ "%.2f"|format(network.P2P_network_bandwidth.score) }} </td>
+                        <td class="tg-0lax"> {{ network.P2P_network_bandwidth.weights }} </td>
+                        <td class="tg-0lax" rowspan="3"> {{ "%.2f"|format(network.issue_score) }} </td>
+                    </tr>
+                    <tr>
+                        <td class="tg-0lax">点对点消息延迟</td>
+                        <td class="tg-0lax"> {{ test.network.P2P_message_latency }} </td>
+                        <td class="tg-0lax"> {{ network.P2P_message_latency[scale] }} </td>
+                        <td class="tg-0lax"> {{ "%.2f"|format(network.P2P_message_latency.score) }} </td>
+                        <td class="tg-0lax"> {{ network.P2P_message_latency.weights }} </td>
+                    </tr>
+                    <tr>
+                        <td class="tg-0lax">网络对分带宽与注入带宽比值</td>
+                        <td class="tg-0lax"> {{ test.network.ratio }} </td>
+                        <td class="tg-0lax"> {{ network.ratio[scale] }} </td>
+                        <td class="tg-0lax"> {{ "%.2f"|format(network.ratio.score) }} </td>
+                        <td class="tg-0lax"> {{ network.ratio.weights }} </td>
+                    </tr>
+                    <tr>
+                        <td class="tg-1wig" rowspan="2">系统能效</td>
+                        <td class="tg-0lax">单位功耗的浮点计算性能</td>
+                        <td class="tg-0lax"> {{ test.system.compute_effiency }} </td>
+                        <td class="tg-0lax"> {{ system.compute_effiency[scale] }} </td>
+                        <td class="tg-0lax"> {{ "%.2f"|format(system.compute_effiency.score) }} </td>
+                        <td class="tg-0lax"> {{ system.compute_effiency.weights }} </td>
+                        <td class="tg-0lax" rowspan="2"> {{ "%.2f"|format(system.issue_score) }} </td>
+                    </tr>
+                    <tr>
+                        <td class="tg-0lax">单位功耗的文件系统聚合IO操作速率</td>
+                        <td class="tg-0lax"> {{ test.system.IO_operation_rate }} </td>
+                        <td class="tg-0lax"> {{ system.IO_operation_rate[scale] }} </td>
+                        <td class="tg-0lax"> {{ "%.2f"|format(system.IO_operation_rate.score) }} </td>
+                        <td class="tg-0lax"> {{ system.IO_operation_rate.weights }} </td>
+                    </tr>
+                    <tr>
+                        <td class="tg-1wig" rowspan="5">系统平衡性</td>
+                        <td class="tg-0lax">内存容量与处理器核心数的比值</td>
+                        <td class="tg-0lax"> {{ test.balance.mem2cpu }} </td>
+                        <td class="tg-0lax"> {{ balance.mem2cpu[scale] }} </td>
+                        <td class="tg-0lax"> {{ "%.2f"|format(balance.mem2cpu.score) }} </td>
+                        <td class="tg-0lax"> {{ balance.mem2cpu.weights }} </td>
+                        <td class="tg-0lax" rowspan="5"> {{ "%.2f"|format(balance.issue_score) }} </td>
+                    </tr>
+                    <tr>
+                        <td class="tg-0lax">BurstBuffer与内存的容量比</td>
+                        <td class="tg-0lax"> {{ test.balance.buffer2mem }} </td>
+                        <td class="tg-0lax"> {{ balance.buffer2mem[scale] }} </td>
+                        <td class="tg-0lax"> {{ "%.2f"|format(balance.buffer2mem.score) }} </td>
+                        <td class="tg-0lax"> {{ balance.buffer2mem.weights }} </td>
+                    </tr>
+                    <tr>
+                        <td class="tg-0lax">并行文件系统与BurstBuffer的容量比</td>
+                        <td class="tg-0lax"> {{ test.balance.file2buffer }} </td>
+                        <td class="tg-0lax"> {{ balance.file2buffer[scale] }} </td>
+                        <td class="tg-0lax"> {{ "%.2f"|format(balance.file2buffer.score) }} </td>
+                        <td class="tg-0lax"> {{ balance.file2buffer.weights }} </td>
+                    </tr>
+                    <tr>
+                        <td class="tg-0lax">内存与BurstBuffer的带宽比</td>
+                        <td class="tg-0lax"> {{ test.balance.mem2buffer }} </td>
+                        <td class="tg-0lax"> {{ balance.mem2buffer[scale] }} </td>
+                        <td class="tg-0lax"> {{ "%.2f"|format(balance.mem2buffer.score) }} </td>
+                        <td class="tg-0lax"> {{ balance.mem2buffer.weights }} </td>
+                    </tr>
+                    <tr>
+                        <td class="tg-0lax">BurstBuffer与并行文件系统的带宽比</td>
+                        <td class="tg-0lax"> {{ test.balance.buffer2file }} </td>
+                        <td class="tg-0lax"> {{ balance.buffer2file[scale] }} </td>
+                        <td class="tg-0lax"> {{ "%.2f"|format(balance.buffer2file.score) }} </td>
+                        <td class="tg-0lax"> {{ balance.buffer2file.weights }} </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div id="app" style="width:600px; height:600px; margin: 20px auto;"></div>
+        <div>
+            <h5>集群评价：</h5>
+            <p style="margin: auto 40px; line-height: 2em;">
+                &bull; 该集群HPL性能{{ test.compute.HPL }}PF，属于小型系统 <br>
+                &bull; 集群在AI计算、存储、网络方面性能较好，在计算、能效和系统平衡性方面有待提高 <br>
+                &bull; 集群的综合分数为{{ "%.2f"|format(sum_score) }}分 <br>
+            </p>
+        </div>
+    </div>
+    <script>
+        var chart = echarts.init(document.getElementById('app'), 'white', { renderer: 'canvas' });
+        var option = {{ radarmap }}
+        chart.setOption(option);
+    </script>
+</body>
+
+</html>

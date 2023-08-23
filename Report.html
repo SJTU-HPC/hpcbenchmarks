@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Report</title>
+    <script type="text/javascript" src="https://assets.pyecharts.org/assets/echarts.min.js"></script>
+    <style type="text/css">
+        .container {
+            padding: 1rem;
+            width: 700px;
+            margin: auto;
+        }
+
+        .tg {
+            border-collapse: collapse;
+            border-color: #ccc;
+            border-spacing: 0;
+        }
+
+        .tg td {
+            background-color: #fff;
+            border-color: #ccc;
+            border-style: solid;
+            border-width: 1px;
+            color: #333;
+            font-family: Arial, sans-serif;
+            font-size: 14px;
+            overflow: hidden;
+            padding: 10px 5px;
+            word-break: normal;
+        }
+
+        .tg th {
+            background-color: #f0f0f0;
+            border-color: #ccc;
+            border-style: solid;
+            border-width: 1px;
+            color: #333;
+            font-family: Arial, sans-serif;
+            font-size: 14px;
+            font-weight: normal;
+            overflow: hidden;
+            padding: 10px 5px;
+            word-break: normal;
+        }
+
+        .tg .tg-fymr {
+            border-color: inherit;
+            font-weight: bold;
+            text-align: left;
+            vertical-align: top
+        }
+
+        .tg .tg-1wig {
+            font-weight: bold;
+            text-align: left;
+            vertical-align: top
+        }
+
+        .tg .tg-0lax {
+            text-align: left;
+            vertical-align: top
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div id="info" style="margin: 20px auto; text-align: center;">
+            <h1>HPCbench 测试报告</h1>
+        </div>
+        <div style="margin: 10px auto; text-align: left;">
+            <h5>集群：思源一号</h5>
+            <h5>报告日期：2023.08.23</h5>
+        </div>
+        <div id="table" style="width:620px; margin: 20px auto;">
+            <table class="tg">
+                <thead>
+                    <tr>
+                        <th class="tg-fymr">维度</th>
+                        <th class="tg-fymr">指标</th>
+                        <th class="tg-fymr">实测值</th>
+                        <th class="tg-fymr">参考值</th>
+                        <th class="tg-fymr">指标分数</th>
+                        <th class="tg-fymr">权重</th>
+                        <th class="tg-fymr">维度分</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="tg-fymr" rowspan="2">计算性能</td>
+                        <td class="tg-0lax">HPL双精度浮点计算性能</td>
+                        <td class="tg-0lax"> 3.02 </td>
+                        <td class="tg-0lax"> 5.95 </td>
+                        <td class="tg-0lax"> 63.45 </td>
+                        <td class="tg-0lax"> 0.6 </td>
+                        <td class="tg-0lax" rowspan="2"> 67.12 </td>
+                    </tr>
+                    <tr>
+                        <td class="tg-0lax">HPCG双精度浮点计算性能</td>
+                        <td class="tg-0lax"> 102.357 </td>
+                        <td class="tg-0lax"> 175.181 </td>
+                        <td class="tg-0lax"> 73.04 </td>
+                        <td class="tg-0lax"> 0.4 </td>
+                    </tr>
+                    <tr>
+                        <td class="tg-fymr" rowspan="2">AI计算性能</td>
+                        <td class="tg-0lax">图像推理任务的计算性能</td>
+                        <td class="tg-0lax"> 969931 </td>
+                        <td class="tg-0lax"> 1280000 </td>
+                        <td class="tg-0lax"> 94.72 </td>
+                        <td class="tg-0lax"> 0.5 </td>
+                        <td class="tg-0lax" rowspan="2"> 88.02 </td>
+                    </tr>
+                    <tr>
+                        <td class="tg-0lax">图像训练任务的计算性能</td>
+                        <td class="tg-0lax"> 106 </td>
+                        <td class="tg-0lax"> 162 </td>
+                        <td class="tg-0lax"> 81.79 </td>
+                        <td class="tg-0lax"> 0.5 </td>
+                    </tr>
+                    <tr>
+                        <td class="tg-fymr" rowspan="5">存储性能</td>
+                        <td class="tg-0lax">文件系统单客户端单流带宽</td>
+                        <td class="tg-0lax"> 6.1 </td>
+                        <td class="tg-0lax"> 6.5 </td>
+                        <td class="tg-0lax"> 100.00 </td>
+                        <td class="tg-0lax"> 0.2 </td>
+                        <td class="tg-0lax" rowspan="5"> 79.51 </td>
+                    </tr>
+                    <tr>
+                        <td class="tg-0lax">文件系统单客户端多流带宽</td>
+                        <td class="tg-0lax"> 15 </td>
+                        <td class="tg-0lax"> 11.3 </td>
+                        <td class="tg-0lax"> 100.00 </td>
+                        <td class="tg-0lax"> 0.2 </td>
+                    </tr>
+                    <tr>
+                        <td class="tg-0lax">文件系统聚合带宽</td>
+                        <td class="tg-0lax"> 1037 </td>
+                        <td class="tg-0lax"> 2671 </td>
+                        <td class="tg-0lax"> 48.53 </td>
+                        <td class="tg-0lax"> 0.2 </td>
+                    </tr>
+                    <tr>
+                        <td class="tg-0lax">文件系统聚合IO操作速率</td>
+                        <td class="tg-0lax"> 9164707 </td>
+                        <td class="tg-0lax"> 17500000 </td>
+                        <td class="tg-0lax"> 65.46 </td>
+                        <td class="tg-0lax"> 0.2 </td>
+                    </tr>
+                    <tr>
+                        <td class="tg-0lax">多协议平均访问效率</td>
+                        <td class="tg-0lax"> 2.02 </td>
+                        <td class="tg-0lax"> 1.91 </td>
+                        <td class="tg-0lax"> 100.00 </td>
+                        <td class="tg-0lax"> 0.2 </td>
+                    </tr>
+                    <tr>
+                        <td class="tg-1wig" rowspan="3">网络性能</td>
+                        <td class="tg-0lax">点对点网络带宽</td>
+                        <td class="tg-0lax"> 1.4 </td>
+                        <td class="tg-0lax"> 6.7 </td>
+                        <td class="tg-0lax"> 26.12 </td>
+                        <td class="tg-0lax"> 0.4 </td>
+                        <td class="tg-0lax" rowspan="3"> 58.45 </td>
+                    </tr>
+                    <tr>
+                        <td class="tg-0lax">点对点消息延迟</td>
+                        <td class="tg-0lax"> 1/0.78 </td>
+                        <td class="tg-0lax"> 1/4.1 </td>
+                        <td class="tg-0lax"> 100.00 </td>
+                        <td class="tg-0lax"> 0.3 </td>
+                    </tr>
+                    <tr>
+                        <td class="tg-0lax">网络对分带宽与注入带宽比值</td>
+                        <td class="tg-0lax"> 1.97 </td>
+                        <td class="tg-0lax"> 1.62 </td>
+                        <td class="tg-0lax"> 100.00 </td>
+                        <td class="tg-0lax"> 0.3 </td>
+                    </tr>
+                    <tr>
+                        <td class="tg-1wig" rowspan="2">系统能效</td>
+                        <td class="tg-0lax">单位功耗的浮点计算性能</td>
+                        <td class="tg-0lax"> 25.21 </td>
+                        <td class="tg-0lax"> 1.35 </td>
+                        <td class="tg-0lax"> 100.00 </td>
+                        <td class="tg-0lax"> 0.6 </td>
+                        <td class="tg-0lax" rowspan="2"> 100.00 </td>
+                    </tr>
+                    <tr>
+                        <td class="tg-0lax">单位功耗的文件系统聚合IO操作速率</td>
+                        <td class="tg-0lax"> 13.4 </td>
+                        <td class="tg-0lax"> 5.67 </td>
+                        <td class="tg-0lax"> 100.00 </td>
+                        <td class="tg-0lax"> 0.4 </td>
+                    </tr>
+                    <tr>
+                        <td class="tg-1wig" rowspan="5">系统平衡性</td>
+                        <td class="tg-0lax">内存容量与处理器核心数的比值</td>
+                        <td class="tg-0lax"> 7.86 </td>
+                        <td class="tg-0lax"> 3.93 </td>
+                        <td class="tg-0lax"> 100.00 </td>
+                        <td class="tg-0lax"> 0.2 </td>
+                        <td class="tg-0lax" rowspan="5"> 68.17 </td>
+                    </tr>
+                    <tr>
+                        <td class="tg-0lax">BurstBuffer与内存的容量比</td>
+                        <td class="tg-0lax"> 1.39 </td>
+                        <td class="tg-0lax"> 2.7 </td>
+                        <td class="tg-0lax"> 64.35 </td>
+                        <td class="tg-0lax"> 0.2 </td>
+                    </tr>
+                    <tr>
+                        <td class="tg-0lax">并行文件系统与BurstBuffer的容量比</td>
+                        <td class="tg-0lax"> 12.33 </td>
+                        <td class="tg-0lax"> 17.2 </td>
+                        <td class="tg-0lax"> 89.61 </td>
+                        <td class="tg-0lax"> 0.2 </td>
+                    </tr>
+                    <tr>
+                        <td class="tg-0lax">内存与BurstBuffer的带宽比</td>
+                        <td class="tg-0lax"> 2019.7 </td>
+                        <td class="tg-0lax"> 2416 </td>
+                        <td class="tg-0lax"> 100.00 </td>
+                        <td class="tg-0lax"> 0.2 </td>
+                    </tr>
+                    <tr>
+                        <td class="tg-0lax">BurstBuffer与并行文件系统的带宽比</td>
+                        <td class="tg-0lax"> 1.123 </td>
+                        <td class="tg-0lax"> 5.5 </td>
+                        <td class="tg-0lax"> 25.52 </td>
+                        <td class="tg-0lax"> 0.2 </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div id="app" style="width:600px; height:600px; margin: 20px auto;"></div>
+        <div>
+            <h5>集群评价：</h5>
+            <p style="margin: auto 40px; line-height: 2em;">
+                &bull; 该集群HPL性能3.02PF，属于小型系统 <br>
+                &bull; 集群在AI计算、存储、网络方面性能较好，在计算、能效和系统平衡性方面有待提高 <br>
+                &bull; 集群的综合分数为76.88分 <br>
+            </p>
+        </div>
+    </div>
+    <script>
+        var chart = echarts.init(document.getElementById('app'), 'white', { renderer: 'canvas' });
+        var option = {
+    "animation": true,
+    "animationThreshold": 2000,
+    "animationDuration": 1000,
+    "animationEasing": "cubicOut",
+    "animationDelay": 0,
+    "animationDurationUpdate": 300,
+    "animationEasingUpdate": "cubicOut",
+    "animationDelayUpdate": 0,
+    "color": [
+        "#c23531",
+        "#2f4554",
+        "#61a0a8",
+        "#d48265",
+        "#749f83",
+        "#ca8622",
+        "#bda29a",
+        "#6e7074",
+        "#546570",
+        "#c4ccd3",
+        "#f05b72",
+        "#ef5b9c",
+        "#f47920",
+        "#905a3d",
+        "#fab27b",
+        "#2a5caa",
+        "#444693",
+        "#726930",
+        "#b2d235",
+        "#6d8346",
+        "#ac6767",
+        "#1d953f",
+        "#6950a1",
+        "#918597"
+    ],
+    "series": [
+        {
+            "type": "radar",
+            "name": "Score",
+            "data": [
+                [
+                    67.12,
+                    88.02,
+                    79.51,
+                    58.45,
+                    100.0,
+                    68.17
+                ]
+            ],
+            "label": {
+                "show": false,
+                "position": "top",
+                "margin": 8
+            },
+            "itemStyle": {
+                "normal": {}
+            },
+            "lineStyle": {
+                "show": true,
+                "width": 1,
+                "opacity": 1,
+                "curveness": 0,
+                "type": "solid"
+            },
+            "areaStyle": {
+                "opacity": 0.2,
+                "color": "#FF0000"
+            },
+            "rippleEffect": {
+                "show": true,
+                "brushType": "stroke",
+                "scale": 2.5,
+                "period": 4
+            }
+        }
+    ],
+    "legend": [
+        {
+            "data": [
+                "Score"
+            ],
+            "selected": {
+                "Score": true
+            },
+            "selectedMode": "single",
+            "show": true,
+            "padding": 5,
+            "itemGap": 10,
+            "itemWidth": 25,
+            "itemHeight": 14
+        }
+    ],
+    "tooltip": {
+        "show": true,
+        "trigger": "item",
+        "triggerOn": "mousemove|click",
+        "axisPointer": {
+            "type": "line"
+        },
+        "showContent": true,
+        "alwaysShowContent": false,
+        "showDelay": 0,
+        "hideDelay": 100,
+        "textStyle": {
+            "fontSize": 14
+        },
+        "borderWidth": 0,
+        "padding": 5
+    },
+    "radar": {
+        "indicator": [
+            {
+                "name": "\u8ba1\u7b97",
+                "max": 100
+            },
+            {
+                "name": "AI",
+                "max": 100
+            },
+            {
+                "name": "\u5b58\u50a8",
+                "max": 100
+            },
+            {
+                "name": "\u7f51\u7edc",
+                "max": 100
+            },
+            {
+                "name": "\u80fd\u6548",
+                "max": 100
+            },
+            {
+                "name": "\u5e73\u8861\u6027",
+                "max": 100
+            }
+        ],
+        "name": {
+            "textStyle": {
+                "color": "#000000"
+            }
+        },
+        "splitLine": {
+            "show": true,
+            "lineStyle": {
+                "show": true,
+                "width": 1,
+                "opacity": 1,
+                "curveness": 0,
+                "type": "solid"
+            }
+        },
+        "splitArea": {
+            "show": true,
+            "areaStyle": {
+                "opacity": 1
+            }
+        },
+        "axisLine": {
+            "show": true,
+            "onZero": true,
+            "onZeroAxisIndex": 0
+        }
+    },
+    "title": [
+        {
+            "text": "\u7efc\u5408\u5206\uff1a76.88",
+            "right": true,
+            "padding": 5,
+            "itemGap": 10
+        }
+    ]
+}
+        chart.setOption(option);
+    </script>
+</body>
+
+</html>
