@@ -3,6 +3,7 @@ HPCBench是一个高性能集群计算性能评测工具集，本评测工具集
 用户可简单根据自己集群配置修改模板文件，即可对集群进行评测。
 
 # 评测工具集使用方法
+
 ## 依赖环境
 HPCBench在下列环境已通过测试：  
 系统环境：CentOS7   
@@ -12,12 +13,17 @@ GPU ：NVIDIA A100
 编译器：GCC-11.2.0  
 MPI：OpenMPI-4.1.1  
 调度系统：slurm
+
 ## 安装HPCBench
 可以使用以下命令将HPCBench仓库克隆到本地，并安装必须的依赖。
+
+```
 $ git clone
 $ pip3 install -r requirements.txt
 ```    
+
 项目文件夹内包含以下几个文件和目录：
+
 ```
 #模块测试目录
 benchmark 
@@ -34,14 +40,19 @@ init.sh
 #主程序
 hpcbench
 ```
+
 ## 初始化环境
 使用以下命令进行初始化环境操作：
+
 ```
 $ source init.sh
 ```
+
 用户需要根据具体集群配置简单修改初始环境文件，包括录入集群信息，以及调用GCC和OpenMPI命令
+
 ## 简单运行测试
 初始化完后，就可以执行HPCBench的简单命令：
+
 ```
 $ ./hpcbench -h
 usage: hpcbench [-h] [--build] [--clean] [...]
@@ -76,29 +87,40 @@ options:
 ## 模块测试示例
 下面以``COMPUTE``测试模块中的``HPL``为例进行测试介绍，该模块以两节点，每节点64核心配置进行计算，用户可根据实际情况自行修改配置文件。
 ### 调用配置文件
+
 ```
 ./hpcbench -use templates/compute/hpl.linux64.config
 Switch config file to templates/compute/hpl.linux64.config
 Successfully switched. config file saved in file .meta
 ```
+
 ### 下载依赖文件
+
 ```
 ./hpcbench -d
 ```
+
 ### 安装依赖库
+
 ```
 ./hpcbench -dp
 ```
+
 ### 安装HPL
+
 ```
 ./hpcbench -b
 ```
+
 ### 提交作业
+
 ```
 ./hpcbench -j
 ```
+
 ### 查看测试结果
 计算完成后，在result/compute路径下会生成hpl.txt文件,查看可得知浮点计算速度为6303Gflops，符合精度要求
+
 ```
 $ tail -n30 result/compute/hpl.txt
 Column=000175872 Fraction=99.6% Gflops=6.307e+03
@@ -123,4 +145,5 @@ Max aggregated wall time up tr sv  . :               0.26
 ||Ax-b||_oo/(eps*(||A||_oo*||x||_oo+||b||_oo)*N)=   8.52254435e-04 ...... PASSED
 ===========================================================
 ```
+
 ## 完成所有模块测试
