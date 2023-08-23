@@ -92,7 +92,7 @@
         }
     },
     "system":{
-        "compute_effiency":{
+        "compute_efficiency":{
             "name":"单位功耗的浮点计算性能",
             "weights":0.6,
             "large":14.719,

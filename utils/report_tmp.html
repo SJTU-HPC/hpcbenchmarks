@@ -71,10 +71,10 @@
             <h1>HPCbench 测试报告</h1>
         </div>
         <div style="margin: 10px auto; text-align: left;">
-            <h5>集群：思源一号</h5>
-            <h5>报告日期：2023.08.23</h5>
+            <h5>集群：{{ name }} </h5>
+            <h5>报告日期：{{ time }}</h5>
         </div>
-        <div id="table" style="width:620px; margin: 20px auto;">
+        <div id="table" style="width: 620px; margin: 20px auto;">
             <table class="tg">
                 <thead>
                     <tr>
@@ -183,10 +183,10 @@
                     <tr>
                         <td class="tg-1wig" rowspan="2">系统能效</td>
                         <td class="tg-0lax">单位功耗的浮点计算性能</td>
-                        <td class="tg-0lax"> {{ test.system.compute_effiency }} </td>
-                        <td class="tg-0lax"> {{ system.compute_effiency[scale] }} </td>
-                        <td class="tg-0lax"> {{ "%.2f"|format(system.compute_effiency.score) }} </td>
-                        <td class="tg-0lax"> {{ system.compute_effiency.weights }} </td>
+                        <td class="tg-0lax"> {{ test.system.compute_efficiency }} </td>
+                        <td class="tg-0lax"> {{ system.compute_efficiency[scale] }} </td>
+                        <td class="tg-0lax"> {{ "%.2f"|format(system.compute_efficiency.score) }} </td>
+                        <td class="tg-0lax"> {{ system.compute_efficiency.weights }} </td>
                         <td class="tg-0lax" rowspan="2"> {{ "%.2f"|format(system.issue_score) }} </td>
                     </tr>
                     <tr>
@@ -240,8 +240,14 @@
         <div>
             <h5>集群评价：</h5>
             <p style="margin: auto 40px; line-height: 2em;">
-                &bull; 该集群HPL性能{{ test.compute.HPL }}PF，属于小型系统 <br>
-                &bull; 集群在AI计算、存储、网络方面性能较好，在计算、能效和系统平衡性方面有待提高 <br>
+                &bull; 该集群HPL性能{{ test.compute.HPL }}PF，属于{{ scale_CN }}型系统 <br>
+                {% if (good | length > 0) and (better | length > 0) %}
+                &bull; 集群在{{ good }}方面性能较好，在{{ better }}方面有待提高 <br>
+                {% elif (good | length == 0) and (better | length > 0) %}
+                &bull; 集群在{{ better }}方面有待提高 <br>
+                {% else %}
+                &bull; 集群在{{ good }}方面性能较好 <br>
+                {% endif %}
                 &bull; 集群的综合分数为{{ "%.2f"|format(sum_score) }}分 <br>
             </p>
         </div>

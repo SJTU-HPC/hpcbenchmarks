@@ -16,13 +16,10 @@ ROOT_DIR = dirname(abspath(__file__))
 LOG_DIR = join(ROOT_DIR, env.str('LOG_DIR', 'logs'))
 
 # definition of environments
-C_SMALL, C_MEDIUM, C_LARGE = 'small', 'medium', 'large'
-CLUSTER_SCALE = env.str('CLUSTER_SCALE', C_MEDIUM).lower()
+CLUSTER_SCALE = None
+CLUSTER_NAME = env.str('CLUSTER_NAME')
 APP_DEBUG = env.bool('APP_DEBUG', False)
 APP_CONFIG = env.str('APP_CONFIG', None)
-IS_SMALL = CLUSTER_SCALE == C_SMALL
-IS_MEDIUM = CLUSTER_SCALE == C_MEDIUM
-IS_LARGE = CLUSTER_SCALE == C_LARGE
 
 HPCbench_RESULT = env.str('HPCbench_RESULT',join(ROOT_DIR, 'result'))
 HPCbench_BENCHMARK = env.str('HPCbench_BENCHMARK',join(ROOT_DIR, 'benchmark'))

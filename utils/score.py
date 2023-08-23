@@ -1,12 +1,14 @@
 import math
 import json
 import copy
-from setting import CLUSTER_SCALE
+import time
+from setting import CLUSTER_SCALE, CLUSTER_NAME
 from utils.tool import Tool, dict_to_obj
 import pyecharts.options as opts
 from loguru import logger
 from jinja2 import Environment, FileSystemLoader
 from pyecharts.charts import Radar
+from utils.result import get_result
 
 test_result_file = "result/test_result.json"
 standard_file = "utils/standard_score.json"
@@ -19,8 +21,21 @@ def read_file(file):
         data = json.load(f)
     return data
 
+def get_evaluate(result):
+    issue_map = {'AI':'AI计算', 'compute':'计算', 'storage':'存储', 'network':'网络', 'system':'能效', 'balance':'系统平衡性'}
+    good = []
+    better = []
+    for k in issue_map:
+        score = result[k].issue_score
+        if score < 70:
+            better.append(issue_map[k])
+        else:
+            good.append(issue_map[k])
+    return good, better
+
 def get_score():
-    test_result = read_file(test_result_file)
+    test_result = get_result() # read_file(test_result_file)
+    CLUSTER_SCALE = tool.get_scale(test_result['compute']['HPL'])
     standard = read_file(standard_file)
     sum_score = 0
     for issue, sub_issue in standard.items():
@@ -41,6 +56,7 @@ def get_score():
     tool.write_file(test_score_file, json.dumps(standard, ensure_ascii=False))
 
     res = dict_to_obj(standard)
+    good, better = get_evaluate(res)
 
     data = [[round(res.compute.issue_score, 2),
             round(res.AI.issue_score, 2),
@@ -85,7 +101,12 @@ def get_score():
     data = copy.deepcopy(standard)
     data['radarmap'] = c.dump_options_with_quotes()
     data['scale'] = CLUSTER_SCALE
+    data['scale_CN'] = {'small':'小', 'medium':'中', 'large':'大'}[CLUSTER_SCALE]
     data['test'] = test_result
+    data['good'] = '、'.join(good)
+    data['better'] = '、'.join(better)
+    data['time'] = time.strftime("%Y.%m.%d", time.localtime())
+    data['name'] = CLUSTER_NAME
 
     with open('Report.html', 'w') as f:
         f.write(template.render(data))

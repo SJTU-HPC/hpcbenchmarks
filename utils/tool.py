@@ -53,6 +53,16 @@ class Tool:
         cmd = cmd.strip()
         return cmd
 
+    def get_scale(self, hpl_score):
+        CLUSTER_SCALE = None
+        if hpl_score <= 10:
+            CLUSTER_SCALE = 'small'
+        elif hpl_score > 30:
+            CLUSTER_SCALE = 'large'
+        else:
+            CLUSTER_SCALE = 'medium'
+        return CLUSTER_SCALE
+
     def get_time_stamp(self):
         return time.strftime("%Y-%m-%d %H:%M:%S", time.localtime())
     
@@ -64,7 +74,16 @@ class Tool:
         except IOError:
             return content
         return content
-    
+
+    def read_lines(self, filename):
+        content = ''
+        try:
+            with open(filename, encoding='utf-8') as f:
+                content = f.readlines()
+        except IOError:
+            return content
+        return content
+
     def write_file(self, filename, content=""):
         with open(filename,'w') as f:
             f.write(content)

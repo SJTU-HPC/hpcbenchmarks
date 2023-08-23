@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*- 
 import argparse
 
-from setting import IS_SMALL, IS_MEDIUM, IS_LARGE, IS_WINDOWS
+from setting import IS_WINDOWS
 from loguru import logger
 
 from utils.app import App

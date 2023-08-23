@@ -15,12 +15,12 @@ export DOWNLOAD_TOOL=${CUR_PATH}/package/common/download.sh
 export CHECK_DEPS=${CUR_PATH}/package/common/check_deps.sh
 export CHECK_ROOT=${CUR_PATH}/package/common/check_root.sh
 
+export CLUSTER_NAME=思源一号
 export GPU_PARTITION=a100
 export CPU_PARTITION=64c512g 
 export CPU_MAX_CORES=64
-export CLUSTER_SCALE=small
-export CLUSTER_POWER=10000
-export STORAGE_POWER=10000
+export CLUSTER_POWER=314.25
+export STORAGE_POWER=192
 export CLUSTER_HPL=10000
 export CLUSTER_BURSTBUFFER=111616
 export TOTAL_NODES=900
@@ -28,7 +28,7 @@ export PARA_STORAGE_PATH=/mnt/f
 export BW_BURSTBUFFER=12100.38
 export HADOOP_DATA=${CUR_PATH}/benchmark/storage/protocol/hadoop_data
 
-mkdir -p tmp downloads 
+mkdir -p tmp downloads software
 if [ ! -d benchmark ];then
 	mkdir -p benchmark/AI benchmark/compute benchmark/jobs benchmark/network benchmark/storage/ior benchmark/storage/protocol
 fi
