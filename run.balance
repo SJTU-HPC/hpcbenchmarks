@@ -1,0 +1,6 @@
+#!/bin/bash
+
+source init.sh
+./hpcbench -use templates/balance/balance.linux64.config
+./hpcbench -rb
+

@@ -1,0 +1,34 @@
+#!/bin/bash
+
+# 加载环境
+source init.sh
+
+# ior
+./hpcbench -use templates/storage/ior.$arch.config
+./hpcbench -d
+./hpcbench -dp
+./hpcbench -cls
+./hpcbench -b
+./hpcbench -j
+
+# protocol
+## posix
+./hpcbench -use templates/storage/protocol/posix.$arch.config
+./hpcbench -rb
+
+## hadoop
+./hpcbench -use templates/storage/protocol/hadoop.$arch.config
+./hpcbench -d
+./hpcbench -dp
+./hpcbench -b
+./hpcbench -rb
+
+## warp
+./hpcbench -use templates/storage/protocol/warp.$arch.config
+./hpcbench -d
+./hpcbench -dp
+./hpcbench -b
+./hpcbench -rb
+
+## nfs
+

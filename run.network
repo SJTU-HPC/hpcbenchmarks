@@ -1,0 +1,12 @@
+#!/bin/bash
+
+# 加载环境
+source init.sh
+
+# osu
+./hpcbench -use templates/network/osu.$arch.config
+./hpcbench -d
+./hpcbench -dp
+./hpcbench -cls
+./hpcbench -b
+./hpcbench -j

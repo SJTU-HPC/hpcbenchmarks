@@ -1,0 +1,24 @@
+#!/bin/bash
+
+# 加载环境
+source init.sh
+
+# hpl
+./hpcbench -install openblas/0.3.18 gcc
+./hpcbench -use templates/compute/hpl.$arch.config
+./hpcbench -d
+./hpcbench -dp
+./hpcbench -cls
+./hpcbench -b
+./hpcbench -r
+./hpcbench -j
+
+# hpcg
+./hpcbench -use templates/compute/hpcg.$arch.config
+./hpcbench -d
+./hpcbench -dp
+./hpcbench -cls
+./hpcbench -b
+./hpcbench -r
+./hpcbench -j
+
