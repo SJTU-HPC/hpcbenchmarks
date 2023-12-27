@@ -30,5 +30,9 @@ source init.sh
 ./hpcbench -b
 ./hpcbench -rb
 
-## nfs
-
+## nfs should be run with root or sudo
+./hpcbench -use templates/storage/protocol/nfs.$arch.config
+./hpcbench -d
+./hpcbench -dp
+./hpcbench -b
+./hpcbench -rb

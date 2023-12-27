@@ -10,7 +10,6 @@ source init.sh
 ./hpcbench -dp
 ./hpcbench -cls
 ./hpcbench -b
-./hpcbench -r
 ./hpcbench -j
 
 # hpcg
@@ -19,6 +18,5 @@ source init.sh
 ./hpcbench -dp
 ./hpcbench -cls
 ./hpcbench -b
-./hpcbench -r
 ./hpcbench -j
 

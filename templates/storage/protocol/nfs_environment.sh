@@ -8,7 +8,7 @@
 #systemctl enable --now nfs-server
 
 # 3. 配置要共享的文件夹
-mkdir -p /lustre/test/protocol_test/nfs_data
+mkdir -p /dssg/test/protocol_test/nfs_data
 echo "/dssg/test/protocol_test/nfs_data *(rw,no_root_squash,sync)" >> /etc/exports
 
 #此文件的配置格式为：<输出目录> [客户端1 选项（访问权限,用户映射,其他）] [客户端2 选项（访问权限,用户映射,其他）]

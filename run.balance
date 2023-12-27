@@ -1,6 +1,51 @@
 #!/bin/bash
 
 source init.sh
+#scratch bw test
+module use ./software/moduledeps/gcc${gcc_version_number}/
+module load ior/master
+
+cat << \EOF >  scratch_bw.slurm
+#!/bin/bash
+#SBATCH --job-name="aggreagate_bandwidth"
+#SBATCH -N 2
+#SBATCH --ntasks-per-node=64
+#SBATCH --output=logs/scratch_bandwidth.out
+#SBATCH --error=logs/scratch_bandwidth.out
+#SBATCH -p {{ CPU_PARTITION }}
+#SBATCH --exclusive
+
+NCT=2
+
+# Date Stamp for benchmark
+SEQ=64
+MAXPROCS=128
+DATA_SIZE=128
+
+BASE_DIR=$SCRATCH/iortest
+RESULT_DIR=$HPCbench_ROOT/result/balance
+
+NCT=2 #`grep -v ^# hfile |wc -l`
+DS=`date +"%F_%H:%M:%S"`
+# Overall data set size in GiB. Must be >=MAXPROCS. Should be a power of 2.
+
+while [ ${SEQ} -le ${MAXPROCS} ]; do
+        NPROC=`expr ${NCT} \* ${SEQ}`
+        BSZ=`expr ${DATA_SIZE} / ${SEQ}`"g"
+        # Alternatively, set to a static value and let the data size increase.
+        # BSZ="1g"
+        # BSZ="${DATA_SIZE}"
+        mpirun \
+                  ior -v -w -r -i 4 -F \
+                    -o ${BASE_DIR}/ior-test3.file \
+                      -t 1m -b ${BSZ}  | tee ${RESULT_DIR}/aggregation_bandwidth.txt
+        SEQ=`expr ${SEQ} \* 2`
+done
+EOF
+
+sbatch scratch_bw.slurm
+
+
 ./hpcbench -use templates/balance/balance.linux64.config
 ./hpcbench -rb
 
