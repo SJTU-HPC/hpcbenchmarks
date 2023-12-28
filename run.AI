@@ -1,0 +1,20 @@
+#!/bin/bash
+
+# 加载环境
+source init.sh
+
+# maskrcnn
+./hpcbench -use templates/AI/maskrcnn.$arch.config
+./hpcbench -d
+./hpcbench -dp
+./hpcbench -b
+./hpcbench -rb
+./hpcbench -j
+
+# hpcg
+./hpcbench -use templates/compute/resnet.$arch.config
+./hpcbench -d
+./hpcbench -dp
+./hpcbench -b
+./hpcbench -rb
+./hpcbench -j
