@@ -51,7 +51,7 @@
             "weights":0.2,
             "large":2500,
             "medium":1760,
-            "small":2671
+            "small":1500
         },
         "IO_rate":{
             "name":"文件系统聚合IO操作速率",
@@ -63,9 +63,9 @@
         "multi_request":{
             "name":"多协议平均访问效率",
             "weights":0.2,
-            "large":1.86,
-            "medium":1.94,
-            "small":1.91
+            "large":62.0,
+            "medium":64.6,
+            "small":63.6
         }
     },
     "network":{

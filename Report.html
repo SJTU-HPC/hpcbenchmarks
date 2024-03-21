@@ -8,7 +8,7 @@
     <style type="text/css">
         .container {
             padding: 1rem;
-            width: 700px;
+            width: 900px;
             margin: auto;
         }
 
@@ -71,10 +71,10 @@
             <h1>HPCbench 测试报告</h1>
         </div>
         <div style="margin: 10px auto; text-align: left;">
-            <h5>集群：思源一号</h5>
-            <h5>报告日期：2023.08.23</h5>
+            <h5>集群：kp920 </h5>
+            <h5>报告日期：2024.03.21</h5>
         </div>
-        <div id="table" style="width:620px; margin: 20px auto;">
+        <div id="table" style="width: 820px; margin: 20px auto;">
             <table class="tg">
                 <thead>
                     <tr>
@@ -90,108 +90,108 @@
                 <tbody>
                     <tr>
                         <td class="tg-fymr" rowspan="2">计算性能</td>
-                        <td class="tg-0lax">HPL双精度浮点计算性能</td>
-                        <td class="tg-0lax"> 3.02 </td>
+                        <td class="tg-0lax">HPL双精度浮点计算性能（PFLOPS）</td>
+                        <td class="tg-0lax"> 8.30 </td>
                         <td class="tg-0lax"> 5.95 </td>
-                        <td class="tg-0lax"> 63.45 </td>
+                        <td class="tg-0lax"> 100.00 </td>
                         <td class="tg-0lax"> 0.6 </td>
-                        <td class="tg-0lax" rowspan="2"> 67.12 </td>
+                        <td class="tg-0lax" rowspan="2"> 100.00 </td>
                     </tr>
                     <tr>
-                        <td class="tg-0lax">HPCG双精度浮点计算性能</td>
-                        <td class="tg-0lax"> 102.357 </td>
+                        <td class="tg-0lax">HPCG双精度浮点计算性能（PFLOPS）</td>
+                        <td class="tg-0lax"> 142.09 </td>
                         <td class="tg-0lax"> 175.181 </td>
-                        <td class="tg-0lax"> 73.04 </td>
+                        <td class="tg-0lax"> 100.00 </td>
                         <td class="tg-0lax"> 0.4 </td>
                     </tr>
                     <tr>
                         <td class="tg-fymr" rowspan="2">AI计算性能</td>
-                        <td class="tg-0lax">图像推理任务的计算性能</td>
-                        <td class="tg-0lax"> 969931 </td>
+                        <td class="tg-0lax">图像推理任务的计算性能（Fig/s）</td>
+                        <td class="tg-0lax"> 377.75 </td>
                         <td class="tg-0lax"> 1280000 </td>
-                        <td class="tg-0lax"> 94.72 </td>
+                        <td class="tg-0lax"> 0.04 </td>
                         <td class="tg-0lax"> 0.5 </td>
-                        <td class="tg-0lax" rowspan="2"> 88.02 </td>
+                        <td class="tg-0lax" rowspan="2"> 1.83 </td>
                     </tr>
                     <tr>
-                        <td class="tg-0lax">图像训练任务的计算性能</td>
-                        <td class="tg-0lax"> 106 </td>
+                        <td class="tg-0lax">图像训练任务的计算性能（Fig/s）</td>
+                        <td class="tg-0lax"> 118.18 </td>
                         <td class="tg-0lax"> 162 </td>
-                        <td class="tg-0lax"> 81.79 </td>
+                        <td class="tg-0lax"> 91.19 </td>
                         <td class="tg-0lax"> 0.5 </td>
                     </tr>
                     <tr>
                         <td class="tg-fymr" rowspan="5">存储性能</td>
-                        <td class="tg-0lax">文件系统单客户端单流带宽</td>
-                        <td class="tg-0lax"> 6.1 </td>
+                        <td class="tg-0lax">文件系统单客户端单流带宽（GB/s）</td>
+                        <td class="tg-0lax"> 3.46 </td>
                         <td class="tg-0lax"> 6.5 </td>
-                        <td class="tg-0lax"> 100.00 </td>
+                        <td class="tg-0lax"> 66.52 </td>
                         <td class="tg-0lax"> 0.2 </td>
-                        <td class="tg-0lax" rowspan="5"> 79.51 </td>
+                        <td class="tg-0lax" rowspan="5"> 33.28 </td>
                     </tr>
                     <tr>
-                        <td class="tg-0lax">文件系统单客户端多流带宽</td>
-                        <td class="tg-0lax"> 15 </td>
+                        <td class="tg-0lax">文件系统单客户端多流带宽（GB/s）</td>
+                        <td class="tg-0lax"> 7.60 </td>
                         <td class="tg-0lax"> 11.3 </td>
-                        <td class="tg-0lax"> 100.00 </td>
+                        <td class="tg-0lax"> 84.09 </td>
                         <td class="tg-0lax"> 0.2 </td>
                     </tr>
                     <tr>
-                        <td class="tg-0lax">文件系统聚合带宽</td>
-                        <td class="tg-0lax"> 1037 </td>
-                        <td class="tg-0lax"> 2671 </td>
-                        <td class="tg-0lax"> 48.53 </td>
+                        <td class="tg-0lax">文件系统聚合带宽（GB/s）</td>
+                        <td class="tg-0lax"> 22.15 </td>
+                        <td class="tg-0lax"> 1500 </td>
+                        <td class="tg-0lax"> 1.85 </td>
                         <td class="tg-0lax"> 0.2 </td>
                     </tr>
                     <tr>
-                        <td class="tg-0lax">文件系统聚合IO操作速率</td>
-                        <td class="tg-0lax"> 9164707 </td>
+                        <td class="tg-0lax">文件系统聚合IO操作速率（IOPS）</td>
+                        <td class="tg-0lax"> 5539064 </td>
                         <td class="tg-0lax"> 17500000 </td>
-                        <td class="tg-0lax"> 65.46 </td>
+                        <td class="tg-0lax"> 39.56 </td>
                         <td class="tg-0lax"> 0.2 </td>
                     </tr>
                     <tr>
-                        <td class="tg-0lax">多协议平均访问效率</td>
-                        <td class="tg-0lax"> 2.02 </td>
-                        <td class="tg-0lax"> 1.91 </td>
+                        <td class="tg-0lax">多协议平均访问效率（%）</td>
+                        <td class="tg-0lax"> 67.98 </td>
+                        <td class="tg-0lax"> 63.6 </td>
                         <td class="tg-0lax"> 100.00 </td>
                         <td class="tg-0lax"> 0.2 </td>
                     </tr>
                     <tr>
                         <td class="tg-1wig" rowspan="3">网络性能</td>
-                        <td class="tg-0lax">点对点网络带宽</td>
-                        <td class="tg-0lax"> 1.4 </td>
+                        <td class="tg-0lax">点对点网络带宽（Gbps）</td>
+                        <td class="tg-0lax"> 199.13 </td>
                         <td class="tg-0lax"> 6.7 </td>
-                        <td class="tg-0lax"> 26.12 </td>
+                        <td class="tg-0lax"> 100.00 </td>
                         <td class="tg-0lax"> 0.4 </td>
-                        <td class="tg-0lax" rowspan="3"> 58.45 </td>
+                        <td class="tg-0lax" rowspan="3"> 75.15 </td>
                     </tr>
                     <tr>
-                        <td class="tg-0lax">点对点消息延迟</td>
-                        <td class="tg-0lax"> 1/0.78 </td>
+                        <td class="tg-0lax">点对点消息延迟（μs）</td>
+                        <td class="tg-0lax"> 1/1.15 </td>
                         <td class="tg-0lax"> 1/4.1 </td>
                         <td class="tg-0lax"> 100.00 </td>
                         <td class="tg-0lax"> 0.3 </td>
                     </tr>
                     <tr>
                         <td class="tg-0lax">网络对分带宽与注入带宽比值</td>
-                        <td class="tg-0lax"> 1.97 </td>
+                        <td class="tg-0lax"> 0.50 </td>
                         <td class="tg-0lax"> 1.62 </td>
-                        <td class="tg-0lax"> 100.00 </td>
+                        <td class="tg-0lax"> 38.58 </td>
                         <td class="tg-0lax"> 0.3 </td>
                     </tr>
                     <tr>
                         <td class="tg-1wig" rowspan="2">系统能效</td>
-                        <td class="tg-0lax">单位功耗的浮点计算性能</td>
-                        <td class="tg-0lax"> 25.21 </td>
+                        <td class="tg-0lax">单位功耗的浮点计算性能（FLOPS/W）</td>
+                        <td class="tg-0lax"> 4.60 </td>
                         <td class="tg-0lax"> 1.35 </td>
                         <td class="tg-0lax"> 100.00 </td>
                         <td class="tg-0lax"> 0.6 </td>
                         <td class="tg-0lax" rowspan="2"> 100.00 </td>
                     </tr>
                     <tr>
-                        <td class="tg-0lax">单位功耗的文件系统聚合IO操作速率</td>
-                        <td class="tg-0lax"> 13.4 </td>
+                        <td class="tg-0lax">单位功耗的文件系统聚合IO操作速率（TB/W）</td>
+                        <td class="tg-0lax"> 18.03 </td>
                         <td class="tg-0lax"> 5.67 </td>
                         <td class="tg-0lax"> 100.00 </td>
                         <td class="tg-0lax"> 0.4 </td>
@@ -199,38 +199,38 @@
                     <tr>
                         <td class="tg-1wig" rowspan="5">系统平衡性</td>
                         <td class="tg-0lax">内存容量与处理器核心数的比值</td>
-                        <td class="tg-0lax"> 7.86 </td>
+                        <td class="tg-0lax"> 1.25 </td>
                         <td class="tg-0lax"> 3.93 </td>
-                        <td class="tg-0lax"> 100.00 </td>
+                        <td class="tg-0lax"> 39.76 </td>
                         <td class="tg-0lax"> 0.2 </td>
-                        <td class="tg-0lax" rowspan="5"> 68.17 </td>
+                        <td class="tg-0lax" rowspan="5"> 0.00 </td>
                     </tr>
                     <tr>
                         <td class="tg-0lax">BurstBuffer与内存的容量比</td>
-                        <td class="tg-0lax"> 1.39 </td>
+                        <td class="tg-0lax"> 8.26 </td>
                         <td class="tg-0lax"> 2.7 </td>
-                        <td class="tg-0lax"> 64.35 </td>
+                        <td class="tg-0lax"> 100.00 </td>
                         <td class="tg-0lax"> 0.2 </td>
                     </tr>
                     <tr>
                         <td class="tg-0lax">并行文件系统与BurstBuffer的容量比</td>
-                        <td class="tg-0lax"> 12.33 </td>
+                        <td class="tg-0lax"> 0.00 </td>
                         <td class="tg-0lax"> 17.2 </td>
-                        <td class="tg-0lax"> 89.61 </td>
+                        <td class="tg-0lax"> 0.00 </td>
                         <td class="tg-0lax"> 0.2 </td>
                     </tr>
                     <tr>
                         <td class="tg-0lax">内存与BurstBuffer的带宽比</td>
-                        <td class="tg-0lax"> 2019.7 </td>
+                        <td class="tg-0lax"> 1407.82 </td>
                         <td class="tg-0lax"> 2416 </td>
-                        <td class="tg-0lax"> 100.00 </td>
+                        <td class="tg-0lax"> 72.84 </td>
                         <td class="tg-0lax"> 0.2 </td>
                     </tr>
                     <tr>
                         <td class="tg-0lax">BurstBuffer与并行文件系统的带宽比</td>
-                        <td class="tg-0lax"> 1.123 </td>
+                        <td class="tg-0lax"> 0.55 </td>
                         <td class="tg-0lax"> 5.5 </td>
-                        <td class="tg-0lax"> 25.52 </td>
+                        <td class="tg-0lax"> 12.50 </td>
                         <td class="tg-0lax"> 0.2 </td>
                     </tr>
                 </tbody>
@@ -240,9 +240,11 @@
         <div>
             <h5>集群评价：</h5>
             <p style="margin: auto 40px; line-height: 2em;">
-                &bull; 该集群HPL性能3.02PF，属于小型系统 <br>
-                &bull; 集群在AI计算、存储、网络方面性能较好，在计算、能效和系统平衡性方面有待提高 <br>
-                &bull; 集群的综合分数为76.88分 <br>
+                &bull; 该集群HPL性能8.3037PF，属于小型系统 <br>
+                
+                &bull; 集群在计算、网络、能效方面性能较好，在AI计算、存储、系统平衡性方面有待提高 <br>
+                
+                &bull; 集群的综合分数为51.71分 <br>
             </p>
         </div>
     </div>
@@ -289,12 +291,12 @@
             "name": "Score",
             "data": [
                 [
-                    67.12,
-                    88.02,
-                    79.51,
-                    58.45,
                     100.0,
-                    68.17
+                    1.83,
+                    33.28,
+                    75.15,
+                    100.0,
+                    0.0
                 ]
             ],
             "label": {
@@ -413,7 +415,7 @@
     },
     "title": [
         {
-            "text": "\u7efc\u5408\u5206\uff1a76.88",
+            "text": "\u7efc\u5408\u5206\uff1a51.71",
             "right": true,
             "padding": 5,
             "itemGap": 10

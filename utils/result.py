@@ -63,7 +63,7 @@ def get_result():
     result['compute']['HPL'] = extract_pflops(file)
     ## compute/HPCG
     file = "result/compute/hpcg.txt"
-    pattern = r"Final Summary::HPCG result is VALID with a GFLOP/s rating of=(\d+\.\d+)"
+    pattern = r"Final Summary::HPCG result is VALID with a GFLOP/s rating of=(\d+\.?\d*)"
     result['compute']['HPCG'] = extract_number(pattern, file)/1e6
     ## AI/infering
     file = "result/AI/resnet.txt"
@@ -84,7 +84,7 @@ def get_result():
     ## storage/aggregation_bandwidth
     file = "result/storage/ior/aggregation_bandwidth.txt"
     pattern = r"Max Write: \d+\.\d+ MiB/sec \((\d+\.\d+) MB/sec\)"
-    result['storage']['aggregation_bandwidth'] = extract_number(pattern,file)/1024
+    result['storage']['aggregation_bandwidth'] = extract_number(pattern, file)/1024
     ## storage/multi_request
     file = "result/storage/protocol/posix_test/posix.txt"
     pattern = r"Max Read:.*?(\d+\.\d+).*?MB/sec"
@@ -97,10 +97,10 @@ def get_result():
     file = "result/storage/protocol/hadoop/hdfs_read.log"
     pattern = r'Throughput mb/sec: +(\d+\.\d+)'
     hdfs = extract_number(pattern, file)
-    result['storage']['multi_request']  = ((nfs/posix) + (s3/posix) + (hdfs/posix)) / 3
+    result['storage']['multi_request']  = ((nfs/posix) + (s3/posix) + (hdfs/posix)) / 3.0 * 100
     ## storage/IO_rate
     file = "result/storage/ior/iops.txt"
-    pattern = r"^write\s+\d+\s+(\d+)"
+    pattern = r"^write\s+\d+\.?\d*\s+(\d+)"
     result['storage']['IO_rate']  = extract_number_multline(pattern, file)
     ## network/P2P_network_bandwidth
     file = "result/network/osu_bibw.log"
@@ -117,7 +117,7 @@ def get_result():
     pattern = r'COMPUTE_EFFIENCY=(\d+\.\d+)'
     result['system']['compute_efficiency'] = extract_number(pattern, file)
     ## system/IO_operation_rate
-    pattern = r'IO_operation_rate=(\d+\.\d+)'
+    pattern = r'IO_operation_rate=(\d*\.\d+)'
     result['system']['IO_operation_rate'] = extract_number(pattern,file)
     ## balance
     file = "result/balance/balance.log"

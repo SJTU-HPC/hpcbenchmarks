@@ -6,7 +6,7 @@ import json
 import re
 import textwrap
 from setting import HPCbench_RESULT, ROOT_DIR, GPU_PARTITION, CPU_PARTITION, CPU_MAX_CORES, HADOOP_DATA, \
-    BW_BURSTBUFFER, PARA_STORAGE_PATH, TOTAL_NODES, CLUSTER_BURSTBUFFER, CLUSTER_POWER
+    BW_BURSTBUFFER, PARA_STORAGE_PATH, TOTAL_NODES, CLUSTER_BURSTBUFFER, CLUSTER_POWER, STORAGE_POWER
 
 
 class Dict(dict):
@@ -50,6 +50,7 @@ class Tool:
         cmd = cmd.replace("{{ TOTAL_NODES }}", TOTAL_NODES)
         cmd = cmd.replace("{{ CLUSTER_BURSTBUFFER }}", CLUSTER_BURSTBUFFER)
         cmd = cmd.replace("{{ CLUSTER_POWER }}", CLUSTER_POWER)
+        cmd = cmd.replace("{{ STORAGE_POWER }}", STORAGE_POWER)
         cmd = cmd.strip()
         return cmd
 

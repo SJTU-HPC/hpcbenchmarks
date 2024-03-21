@@ -45,10 +45,9 @@ NPU：Ascend 910
  
 运行环境：Python3   
 编译器：GCC-11.2.0  
-MPI：OpenMPI-4.1.1  
+MPI：OpenMPI-4.1.1
+CUDA：cuda-11.8
 调度系统：slurm
-
-
 
 ## 安装hpcbenchmark
 可以使用以下命令将hpcbenchmark仓库克隆到本地，并安装必须的依赖。
