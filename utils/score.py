@@ -101,7 +101,7 @@ def get_score():
     data = copy.deepcopy(standard)
     data['radarmap'] = c.dump_options_with_quotes()
     data['scale'] = CLUSTER_SCALE
-    data['scale_CN'] = {'small':'小', 'medium':'中', 'large':'大'}[CLUSTER_SCALE]
+    data['scale_CN'] = {'mini':'微', 'small':'小', 'medium':'中', 'large':'大'}[CLUSTER_SCALE]
     data['test'] = test_result
     data['good'] = '、'.join(good)
     data['better'] = '、'.join(better)

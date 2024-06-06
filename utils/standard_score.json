@@ -5,14 +5,16 @@
             "weights":0.6,
             "large":148.6,
             "medium":14.01,
-            "small":5.95
+            "small":6.0,
+	    "mini":0.3
         },
         "HPCG":{
             "name":"HPCG双精度浮点计算性能",
             "weights":0.4,
             "large":2725.75,
             "medium":355.44,
-            "small":175.181
+            "small":175,
+	    "mini":6
         }
     },
     "AI":{
@@ -21,14 +23,16 @@
             "weights":0.5,
             "large":2000000,
             "medium":1500000,
-            "small":1280000
+            "small":100000,
+	    "mini":750
         },
         "training":{
             "name":"图像训练任务的计算性能",
             "weights":0.5,
             "large":10802,
             "medium":254,
-            "small":162
+            "small":10000,
+	    "mini":560
         }
     },
     "storage":{
@@ -37,58 +41,66 @@
             "weights":0.2,
             "large":8,
             "medium":9,
-            "small":6.5
+            "small":6,
+	    "mini":1
         },
         "single_client_multi_fluence":{
             "name":"文件系统单客户端多流带宽",
             "weights":0.2,
             "large":13,
             "medium":21,
-            "small":11.3
+            "small":11,
+	    "mini":5
         },
         "aggregation_bandwidth":{
             "name":"文件系统聚合带宽",
             "weights":0.2,
             "large":2500,
             "medium":1760,
-            "small":1500
+            "small":200,
+	    "mini":80
         },
         "IO_rate":{
             "name":"文件系统聚合IO操作速率",
             "weights":0.2,
             "large":26000000,
             "medium":14000000,
-            "small":17500000
+            "small":17500000,
+	    "mini":4300000
         },
         "multi_request":{
             "name":"多协议平均访问效率",
             "weights":0.2,
             "large":62.0,
             "medium":64.6,
-            "small":63.6
+            "small":65,
+	    "mini":65
         }
     },
     "network":{
         "P2P_network_bandwidth":{
             "name":"点对点网络带宽",
             "weights":0.4,
-            "large":9.6,
-            "medium":8,
-            "small":6.7
+            "large":200,
+            "medium":200,
+            "small":200,
+	    "mini":100
         },
         "P2P_message_latency":{
             "name":"点对点消息延迟",
             "weights":0.3,
             "large":"1/1.67",
             "medium":"1/3.7",
-            "small":"1/4.1"
+            "small":"1/4.0",
+	    "mini":"1/2.0"
         },
         "ratio":{
             "name":"网络对分带宽与注入带宽比值",
             "weights":0.3,
             "large":1.022,
             "medium":2.06,
-            "small":1.62
+            "small":1.5,
+	    "mini":1
         }
     },
     "system":{
@@ -97,14 +109,16 @@
             "weights":0.6,
             "large":14.719,
             "medium":3.56,
-            "small":1.35
+            "small":20,
+	    "mini":6
         },
         "IO_operation_rate":{
             "name":"单位功耗的文件系统聚合IO速率",
             "weights":0.4,
             "large":2.57,
             "medium":3.55,
-            "small":5.67
+            "small":200,
+	    "mini":100
         }
     },
     "balance":{
@@ -113,35 +127,40 @@
             "weights":0.2,
             "large":9.64,
             "medium":1.66,
-            "small":3.93
+            "small":4,
+	    "mini":3.93
         },
         "buffer2mem":{
             "name":"BurstBuffer与内存的容量比",
             "weights":0.2,
             "large":3.78,
             "medium":2.3,
-            "small":2.7
+            "small":2,
+	    "mini":2.7
         },
         "file2buffer":{
             "name":"并行文件系统与BurstBuffer的容量比",
             "weights":0.2,
             "large":23.87,
             "medium":15,
-            "small":17.2
+            "small":10,
+	    "mini":17
         },
         "mem2buffer":{
             "name":"内存与BurstBuffer的带宽比",
             "weights":0.2,
             "large":6000,
             "medium":4000,
-            "small":2416
+            "small":1000,
+	    "mini":125
         },
         "buffer2file":{
             "name":"BurstBuffer与并行文件系统的带宽比",
             "weights":0.2,
             "large":4,
             "medium":3,
-            "small":5.5
+            "small":10,
+	    "mini":5.5
         }
     }
 }

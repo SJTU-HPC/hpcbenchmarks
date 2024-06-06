@@ -68,7 +68,7 @@
 <body>
     <div class="container">
         <div id="info" style="margin: 20px auto; text-align: center;">
-            <h1>HPCbench 测试报告</h1>
+            <h1>HPCbenchmarks 测试报告</h1>
         </div>
         <div style="margin: 10px auto; text-align: left;">
             <h5>集群：{{ name }} </h5>
@@ -98,7 +98,7 @@
                         <td class="tg-0lax" rowspan="2"> {{ "%.2f"|format(compute.issue_score) }} </td>
                     </tr>
                     <tr>
-                        <td class="tg-0lax">HPCG双精度浮点计算性能（PFLOPS）</td>
+                        <td class="tg-0lax">HPCG双精度浮点计算性能（GFLOPS）</td>
                         <td class="tg-0lax"> {{ "%.2f"|format(test.compute.HPCG) }} </td>
                         <td class="tg-0lax"> {{ compute.HPCG[scale] }} </td>
                         <td class="tg-0lax"> {{ "%.2f"|format(compute.HPCG.score) }} </td>

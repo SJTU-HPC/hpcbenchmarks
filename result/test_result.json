@@ -1,33 +1,33 @@
 {
     "compute":{
-        "HPL":3.02,
-        "HPCG":102.357
+        "HPL":1.69,
+        "HPCG":30
     },
     "AI":{
-        "infering":969931,
-        "training":106
+        "infering":5216,
+        "training":1085
     },
     "storage":{
-        "single_client_single_fluence":6.1,
-        "single_client_multi_fluence":15,
-        "aggregation_bandwidth":1037,
-        "IO_rate":9164707,
-        "multi_request":2.02
+        "single_client_single_fluence":2,
+        "single_client_multi_fluence":5.6,
+        "aggregation_bandwidth":40,
+        "IO_rate":2000000,
+        "multi_request":57.2
     },
     "network":{
-        "P2P_network_bandwidth":1.4,
-        "P2P_message_latency":"1/0.78",
-        "ratio":1.97
+        "P2P_network_bandwidth":100,
+        "P2P_message_latency":"1/1.2",
+        "ratio":0.5
     },
     "system":{
-        "compute_efficiency":25.21,
-        "IO_operation_rate":13.4
+        "compute_efficiency":7.3,
+        "IO_operation_rate":50
     },
     "balance":{
-        "mem2cpu":7.86,
-        "buffer2mem":1.39,
-        "file2buffer":12.33,
-        "mem2buffer":2019.7,
-        "buffer2file":1.123
+        "mem2cpu":4,
+        "buffer2mem":0.49,
+        "file2buffer":30,
+        "mem2buffer":3526,
+        "buffer2file":3
     }
 }

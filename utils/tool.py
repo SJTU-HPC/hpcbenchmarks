@@ -56,7 +56,9 @@ class Tool:
 
     def get_scale(self, hpl_score):
         CLUSTER_SCALE = None
-        if hpl_score <= 10:
+        if hpl_score <= 1:
+            CLUSTER_SCALE = 'mini'
+        elif hpl_score <= 10:
             CLUSTER_SCALE = 'small'
         elif hpl_score > 30:
             CLUSTER_SCALE = 'large'
