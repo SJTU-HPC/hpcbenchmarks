@@ -36,14 +36,14 @@ GPU：NVIDIA A100
 
 2. ARM + 昇腾NPU  
 OS：openeuler 2203  
-CPU: kunpeng 910  
+CPU: kunpeng 920  
 NPU：Ascend 910  
 
 # 评测工具集使用方法
 
 ## 依赖环境
  
-运行环境：Python3   
+运行环境：Python3
 编译器：GCC-11.2.0  
 MPI：OpenMPI-4.1.1
 CUDA：cuda-11.8
@@ -54,7 +54,8 @@ CUDA：cuda-11.8
 
 ```
 $ git clone https://github.com/SJTU-HPC/hpcbenchmarks.git
-$ pip3 install -r requirements.txt
+$ conda env create -f requirements.yaml
+$ conda activate hpcbench
 ```    
 
 ## 初始化环境
